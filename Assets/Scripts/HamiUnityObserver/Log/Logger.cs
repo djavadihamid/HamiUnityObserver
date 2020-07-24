@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Observer
+namespace HamiUnityObserver.Log
 {
     internal class Logger
     {
@@ -23,15 +23,7 @@ namespace Observer
         {
             msg += "LISTENERS LIST: \n ";
 
-            foreach (var keyValuePair in Mechanism.Ins.Listeners)
-            {
-                msg += keyValuePair.Key + " : ";
-                foreach (var listener in keyValuePair.Value.GetInvocationList())
-                    msg += listener.Method.ReflectedType.Name + "." + listener.Method.Name + "\n";
-
-                msg +=
-                    "\n\n----------------------------\n----------------------------\n----------------------------\n\n";
-            }
+            
         }
 
         internal void Fire(string type, string param)
