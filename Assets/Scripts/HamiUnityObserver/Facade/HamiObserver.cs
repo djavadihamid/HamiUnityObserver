@@ -18,7 +18,7 @@ namespace HamiUnityObserver.Facade
             return Mechanism.Ins.Fire(type, param);
         }
 
-        public bool NetListen(string routerName, Subscriber handler, bool isSuccess, byte priority = 0,
+        public static bool NetListen(string routerName, Subscriber handler, bool isSuccess, byte priority = 0,
             bool isStatic = false,
             bool isOnlyForOnce = false)
         {
@@ -31,7 +31,7 @@ namespace HamiUnityObserver.Facade
             );
         }
 
-        public bool NetFire(string routerName, bool isSuccess, string jsonParam = "")
+        public static bool NetFire(string routerName, bool isSuccess, string jsonParam = "")
         {
             return Mechanism.Ins.Fire(
                 isSuccess ? "Success_" + routerName : "Failure_" + routerName,
