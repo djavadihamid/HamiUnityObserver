@@ -2,6 +2,9 @@
 {
     public enum SceneName
     {
-        
+        OnlineGameplay,
+        MainMenu,
+        LoadScreen,
+        OfflineGameplay
     }
 }
