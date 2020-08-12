@@ -1,0 +1,3 @@
+[submodule "Assets/Modules/JsonDotNetForUnity"]
+	path = Assets/Modules/JsonDotNetForUnity
+	url = https://github.com/djavadihamid/JsonDotNetForUnity.git
