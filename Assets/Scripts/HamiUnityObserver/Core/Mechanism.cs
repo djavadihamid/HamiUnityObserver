@@ -8,10 +8,10 @@ namespace HamiUnityObserver.Core
 {
     internal class Mechanism
     {
-        private static Mechanism        _ins;
-        public static  Mechanism        Ins => _ins ?? (_ins = new Mechanism());
-        private        List<EventModel> _listeners = new List<EventModel>();
-        public         List<EventModel> Listeners => _listeners;
+        private static Mechanism _ins;
+        public static Mechanism Ins => _ins ?? (_ins = new Mechanism());
+        private List<EventModel> _listeners = new List<EventModel>();
+        public List<EventModel> Listeners => _listeners;
 
         private Mechanism()
         {
@@ -32,9 +32,9 @@ namespace HamiUnityObserver.Core
 
 
         internal bool Listen(
-            string         type,
+            string type,
             Action<string> action,
-            byte           delay,
+            byte delay,
             // bool excludedFromPause,
             bool isStatic,
             bool onlyOnce
@@ -42,13 +42,13 @@ namespace HamiUnityObserver.Core
         {
             if (_listeners.Any(a => a.Action == action && a.Type == type)) return false;
             _listeners.Add(new EventModel
-                           {
-                               Type     = type,
-                               Action   = action,
-                               Delay    = delay,
-                               IsStatic = isStatic,
-                               OnlyOnce = onlyOnce
-                           });
+            {
+                Type = type,
+                Action = action,
+                Delay = delay,
+                IsStatic = isStatic,
+                OnlyOnce = onlyOnce
+            });
 
             _listeners.Sort((x, y) => x.Delay.CompareTo(y.Delay));
 
@@ -64,9 +64,27 @@ namespace HamiUnityObserver.Core
             catch (Exception e)
             {
                 MonoBehaviour.print(
-                                    "[HamiUnityObserver][ERROR] Probably, you are trying to remove a method that does not exist in the list.\n\n" +
-                                    e
-                                   );
+                    "[HamiUnityObserver][ERROR] Probably, you are trying to remove a method that does not exist in the list.\n\n" +
+                    e
+                );
+                return false;
+            }
+
+            return true;
+        }
+
+        internal bool Neglect(string type)
+        {
+            try
+            {
+                _listeners.RemoveAll(h => h.Type == type);
+            }
+            catch (Exception e)
+            {
+                MonoBehaviour.print(
+                    "[HamiUnityObserver][ERROR] Probably, you are trying to remove a method that does not exist in the list.\n\n" +
+                    e
+                );
                 return false;
             }
 

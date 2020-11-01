@@ -44,5 +44,10 @@ namespace HamiUnityObserver.Facade
         {
             return Mechanism.Ins.Neglect(type, handler);
         }
+        
+        public static bool Neglect(string type)
+        {
+            return Mechanism.Ins.Neglect(type);
+        }
     }
 }
