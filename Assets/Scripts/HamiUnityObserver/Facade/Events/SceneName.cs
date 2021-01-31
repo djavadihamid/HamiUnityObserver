@@ -5,6 +5,7 @@
         OnlineGameplay,
         MainMenu,
         LoadScreen,
-        OfflineGameplay
+        OfflineGameplay,
+        Profile
     }
 }
